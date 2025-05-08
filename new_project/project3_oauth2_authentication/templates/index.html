@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OAuth2 Authentication</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% if user %}
+            <h1>Welcome, {{ user.name }}!</h1>
+            <div class="user-info">
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Locale:</strong> {{ user.locale }}</p>
+                <p><strong>Google ID:</strong> {{ user.sub }}</p>
+            </div>
+            <a href="/logout" class="button">Logout</a>
+        {% else %}
+            <h1>Login with Google</h1>
+            <a href="/login" class="button">Sign in with Google</a>
+        {% endif %}
+    </div>
+</body>
+</html>
